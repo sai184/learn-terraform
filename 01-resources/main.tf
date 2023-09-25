@@ -6,4 +6,10 @@ resource "aws_instance" "web" {
 }
 }
 
-
+resource "aws_route53_record" "www" {
+  zone_id =  "Z00468253CUIDTZTPB0D"
+  name    = "test.rdevopsb72online.online"
+  type    = "A"
+  ttl     = 30
+  records = [ aws_instance.web.private_ip ]
+}
