@@ -1,41 +1,41 @@
-resource "aws_instance" "frontend" {
+resource "aws_instance" "frontendt" {
   ami           = "ami-03265a0778a880afb"
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0967e4e86dde6d826"]
   tags = {
-    Name = "frontend"
+    Name = "frontendt"
   }
 }
 
 resource "aws_route53_record" "frontend" {
   zone_id =  "Z00468253CUIDTZTPB0D"
-  name    = "frontend.rdevopsb72online.online"
+  name    = "frontendt.rdevopsb72online.online"
   type    = "A"
   ttl     = 30
-  records = [ aws_instance.frontend.private_ip ]
+  records = [ aws_instance.frontendt.private_ip ]
 }
 
 
-resource "aws_instance" "backend" {
+resource "aws_instance" "backendt" {
   ami           = "ami-03265a0778a880afb"
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0967e4e86dde6d826"]
   tags = {
-    Name = "backend"
+    Name = "backendt"
   }
 }
 
-resource "aws_route53_record" "backend" {
+resource "aws_route53_record" "backendt" {
   zone_id =  "Z00468253CUIDTZTPB0D"
-  name    = "backend.rdevopsb72online.online"
+  name    = "backendt.rdevopsb72online.online"
   type    = "A"
   ttl     = 30
-  records = [ aws_instance.backend.private_ip ]
+  records = [ aws_instance.backendt.private_ip ]
 }
 
 
 
-resource "aws_instance" "mysql" {
+resource "aws_instance" "mysqlt" {
   ami           = "ami-03265a0778a880afb"
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0967e4e86dde6d826"]
@@ -44,10 +44,10 @@ resource "aws_instance" "mysql" {
   }
 }
 
-resource "aws_route53_record" "mysql" {
+resource "aws_route53_record" "mysqlt" {
   zone_id =  "Z00468253CUIDTZTPB0D"
-  name    = "mysql.rdevopsb72online.online"
+  name    = "mysqlt.rdevopsb72online.online"
   type    = "A"
   ttl     = 30
-  records = [ aws_instance.mysql.private_ip ]
+  records = [ aws_instance.mysqlt.private_ip ]
 }
