@@ -20,8 +20,8 @@ variable "zone_id" {
 }
 
 variable "local" {
-  deafult = "data.aws_route53_zone.zone"
+  default = "data.aws_route53_zone.zone"
 }
 #variable "localami" {
- # deafult = "data.aws_route53_zone.zone"
+ # default = "data.aws_route53_zone.zone"
 #}
