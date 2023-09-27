@@ -6,6 +6,6 @@ data "aws_ami" "ami" {
 }
 
 data "aws_security_group" "sg" {
-  name = allow-all
+  name = "allow-all"
  # id = var.security_group_id
 }
