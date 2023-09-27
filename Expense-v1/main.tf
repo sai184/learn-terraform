@@ -9,7 +9,7 @@ resource "aws_instance" "frontendt" {
 
 resource "aws_route53_record" "frontend" {
   zone_id =  "data.aws_route53_zone.zone.zone_id"
-  name    = "frontendt.rdevopsb72online.online"
+  name    = "frontendt.${var.zone_id}"
   type    = "A"
   ttl     = 30
   records = [ aws_instance.frontendt.private_ip ]
@@ -27,7 +27,7 @@ resource "aws_instance" "backendt" {
 
 resource "aws_route53_record" "backendt" {
   zone_id =  "data.aws_route53_zone.zone.zone_id"
-  name    = "backendt.rdevopsb72online.online"
+  name    = "backendt.${var.zone_id}"
   type    = "A"
   ttl     = 30
   records = [ aws_instance.backendt.private_ip ]
@@ -46,7 +46,7 @@ resource "aws_instance" "mysqlt" {
 
 resource "aws_route53_record" "mysqlt" {
   zone_id =  "data.aws_route53_zone.zone.zone_id"
-  name    = "mysqlt.rdevopsb72online.online"
+  name    = "mysqlt.${var.zone_id}"
   type    = "A"
   ttl     = 30
   records = [ aws_instance.mysqlt.private_ip ]
