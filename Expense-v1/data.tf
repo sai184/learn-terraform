@@ -18,3 +18,10 @@ data "aws_route53_zone" "zone" {
 variable "zone_id" {
   default = "rdevopsb72online.online"
 }
+
+variable "local" {
+  deafult = "data.aws_route53_zone.zone"
+}
+#variable "localami" {
+ # deafult = "data.aws_route53_zone.zone"
+#}
