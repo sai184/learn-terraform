@@ -8,7 +8,7 @@ resource "aws_instance" "frontendt" {
 }
 
 resource "aws_route53_record" "frontend" {
-  zone_id =  "data.aws_route53_zone.zone.zone_id"
+  zone_id =  "local.zone_id"
   name    = "frontendt.${var.zone_id}"
   type    = "A"
   ttl     = 30
@@ -26,7 +26,7 @@ resource "aws_instance" "backendt" {
 }
 
 resource "aws_route53_record" "backendt" {
-  zone_id =  "data.aws_route53_zone.zone.zone_id"
+  zone_id =  "local.zone_id"
   name    = "backendt.${var.zone_id}"
   type    = "A"
   ttl     = 30
@@ -45,7 +45,7 @@ resource "aws_instance" "mysqlt" {
 }
 
 resource "aws_route53_record" "mysqlt" {
-  zone_id =  "data.aws_route53_zone.zone.zone_id"
+  zone_id =  "local.zone_id"
   name    = "mysqlt.${var.zone_id}"
   type    = "A"
   ttl     = 30
