@@ -1,4 +1,4 @@
-module "frontend" {
+module "frontendt" {
   source = "./appcreate"
   component = "frontendt"
 }
@@ -6,7 +6,7 @@ module "backendt" {
   source = "./appcreate"
   component = "backendt"
 }
-module "frontend" {
+module "mysqlt" {
   source = "./appcreate"
   component = "mysqlt"
 }
