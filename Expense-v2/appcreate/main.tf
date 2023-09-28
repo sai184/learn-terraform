@@ -1,13 +1,13 @@
 resource "aws_instance" "instance" {
-  ami           = local.ami
-  instance_type = "t3.micro"
+  ami                    = local.ami
+  instance_type          = "t3.micro"
   vpc_security_group_ids = ["sg-0967e4e86dde6d826"]
 
-}
-tags{
-  Name = var.component
-}
 
+  tags = {
+    Name = var.component
+  }
+}
 resource "aws_route53_record" "record" {
   zone_id =  local.zone_id
   name    = "${var.component}.${var.zone_id}"
