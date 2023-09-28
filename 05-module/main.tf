@@ -1,6 +1,6 @@
 module "root" {
   source = "./local-module"
-  root = var.input
+  input = var.input
 }
 variable "input" {
   default = "hello nagarjuna"
