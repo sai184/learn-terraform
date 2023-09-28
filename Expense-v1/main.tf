@@ -15,6 +15,19 @@ resource "aws_route53_record" "frontend" {
   records = [ aws_instance.frontendt.private_ip ]
 }
 
+resource "null_resource" "frontend" {
+  depends_on = [aws_route53_record.frontend]
+
+  provisioner "local-exec" {
+    command = <<EOF
+cd /home/centos/infra-ansible
+git pull
+sleep 60
+ansible-playbook -i ${aws_instance.frontendt.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=frontend
+EOF
+  }
+}
+
 
 resource "aws_instance" "backendt" {
   ami           = local.ami
@@ -31,6 +44,18 @@ resource "aws_route53_record" "backendt" {
   type    = "A"
   ttl     = 30
   records = [ aws_instance.backendt.private_ip ]
+}
+
+resource "null_resource" "backend" {
+  depends_on = [aws_route53_record.backendt]
+  provisioner "local-exec" {
+    command = <<EOF
+cd /home/centos/infra-ansible
+git pull
+sleep 60
+ansible-playbook -i ${aws_instance.backendt.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=backend
+EOF
+  }
 }
 
 
@@ -50,4 +75,16 @@ resource "aws_route53_record" "mysqlt" {
   type    = "A"
   ttl     = 30
   records = [ aws_instance.mysqlt.private_ip ]
+}
+
+resource "null_resource" "mysql" {
+  depends_on = [aws_route53_record.mysqlt]
+  provisioner "local-exec" {
+    command = <<EOF
+cd /home/centos/infra-ansible
+git pull
+sleep 60
+ansible-playbook -i ${aws_instance.mysqlt.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=mysql
+EOF
+  }
 }
