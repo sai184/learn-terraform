@@ -1,7 +1,7 @@
 module "root" {
   source = "./local-module"
-  #input = var.input
+  input = "hello nagarjuna"
 }
-variable "input" {
-  default = "hello nagarjuna"
-}
+#variable "input" {
+ # default = "hello nagarjuna"
+#}
