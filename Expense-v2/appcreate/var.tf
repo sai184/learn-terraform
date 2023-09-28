@@ -1,3 +1,3 @@
 variable "component" {
-  default = ["frontendt","backendt","mysqlt"]
+  default = ["frontend","backend","mysql"]
 }
