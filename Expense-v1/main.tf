@@ -25,7 +25,7 @@ cd /home/centos/Infra-Ansible
 
 git pull
 sleep 60
-#ansible-playbook -i frontenddns.rdevopsb72online.online, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=frontend
+
 ansible-playbook -i ${aws_instance.frontendt.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=frontend
 EOF
   }
