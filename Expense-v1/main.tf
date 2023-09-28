@@ -20,10 +20,13 @@ resource "null_resource" "frontend" {
 
   provisioner "local-exec" {
     command = <<EOF
-cd /home/centos/infra-ansible
+
+cd /home/centos/Infra-Ansible
+
 git pull
 sleep 60
-ansible-playbook -i ${aws_instance.frontendt.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 expense.yml -e role_name=frontend
+#ansible-playbook -i frontenddns.rdevopsb72online.online, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=frontend
+ansible-playbook -i ${aws_instance.frontendt.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=frontend
 EOF
   }
 }
@@ -50,7 +53,7 @@ resource "null_resource" "backend" {
   depends_on = [aws_route53_record.backendt]
   provisioner "local-exec" {
     command = <<EOF
-cd /home/centos/infra-ansible
+cd /home/centos/Infra-Ansible
 git pull
 sleep 60
 ansible-playbook -i ${aws_instance.backendt.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=backend
@@ -81,7 +84,7 @@ resource "null_resource" "mysql" {
   depends_on = [aws_route53_record.mysqlt]
   provisioner "local-exec" {
     command = <<EOF
-cd /home/centos/infra-ansible
+cd /home/centos/Infra-Ansible
 git pull
 sleep 60
 ansible-playbook -i ${aws_instance.mysqlt.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=mysql
