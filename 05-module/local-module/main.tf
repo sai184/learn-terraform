@@ -1,8 +1,8 @@
 resource "null_resource" "module"{
 provisioner "local-exec" {
-  command = "echo ${var.input}"
+  command = "echo ${var.root}"
 }
 }
-variable "input" {
+variable "root" {
 
 }
