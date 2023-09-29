@@ -1,5 +1,5 @@
 module "root" {
-  source = "./local-module"
+  source = "local-module"
   input = var.input
 }
 variable "input" {
