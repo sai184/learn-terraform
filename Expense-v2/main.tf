@@ -1,12 +1,12 @@
 module "frontendt" {
-  source = "appcreate"
+  source = "./appcreate"
   component = "frontend"
 }
 module "backendt" {
-  source = "appcreate"
+  source = "./appcreate"
   component = "backend"
 }
 module "mysqlt" {
-  source = "appcreate"
+  source = "./appcreate"
   component = "mysql"
 }
