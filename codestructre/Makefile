@@ -7,3 +7,5 @@ prod:
 	rm -rf .terraform
 	terraform init -backend-config=env-prod/state.tfvars
 	terraform apply -auto-approve -var-file=env-prod/inputs.tfvars
+
+#in make file give tab space under resource
